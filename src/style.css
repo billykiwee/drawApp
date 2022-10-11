@@ -38,6 +38,7 @@ body {
     color: var(--text-color);
     background-color: var(--white);
     height: 100%;
+    overflow: hidden;
 }
 
 main {

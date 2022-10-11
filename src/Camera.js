@@ -80,7 +80,7 @@ export default function Camera() {
 
                     <div className="w-100 h-100 grid absolute overflow-hidden">
 
-                        <div className='display justify-c w-100 gap zi-2 m-t-1 m-b-1'>
+                        <div className='display justify-c w-100 gap zi-2' style={{height: '10vh'}} >
                             <ButtonControl onClick={e=> setZoom(Zoom >= widthMin ? Zoom -10 : Zoom)} >
                                 <svg className='w-2' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM13.5 10.5h-6" /></svg>
                             </ButtonControl>
@@ -89,7 +89,7 @@ export default function Camera() {
                             </ButtonControl>
                         </div>
 
-                        <div className='display justify-c'>
+                        <div className='display justify-c' style={{height: '80vh'}}>
                             <div className='display justify-c w-88'>
                                 <Image 
                                     src={LoadImag} 
@@ -100,7 +100,7 @@ export default function Camera() {
                             </div>
                         </div>
 
-                        <div className='display justify-c w-100 gap zi-2 bottom-0 m-b-2 fixed'>
+                        <div className='display justify-c w-100 gap zi-2 bottom-0 fixed' style={{height: '10vh'}}>
                             <ButtonControl >
                                 <label htmlFor='upload'>
                                     <svg className='w-2 h-2' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth='1.5' stroke="currentColor">  <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 7.5h-.75A2.25 2.25 0 004.5 9.75v7.5a2.25 2.25 0 002.25 2.25h7.5a2.25 2.25 0 002.25-2.25v-7.5a2.25 2.25 0 00-2.25-2.25h-.75m0-3l-3-3m0 0l-3 3m3-3v11.25m6-2.25h.75a2.25 2.25 0 012.25 2.25v7.5a2.25 2.25 0 01-2.25 2.25h-7.5a2.25 2.25 0 01-2.25-2.25v-.75" /></svg>
@@ -142,7 +142,7 @@ function Image({src, Opacity, Position, Zoom}) {
                 width: `${Zoom}%`
             }} 
             src={src} 
-            className="click w-100 border transition" 
+            className="click w-100 transition" 
         />
     )
 }
