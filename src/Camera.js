@@ -44,7 +44,7 @@ export default function Camera() {
 
         window.addEventListener("load", cameraStart, false)
         
-    }, [window])
+    })
 
 
 
