@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react'
+import Draggable from 'react-draggable'
 import DragImage from './function/Drag'
+
+
 
 
 export default function Camera() {
@@ -56,10 +59,10 @@ export default function Camera() {
         }
 
     }
-
+/* 
     useEffect(e=> {
         DragImage(document.getElementById('Drag_Image'), 'reset')    
-    }, [LoadImag])
+    }, [LoadImag]) */
 
 
 
@@ -86,14 +89,16 @@ export default function Camera() {
                         }
 
                         <div className='display justify-c' style={{height: '80vh'}}>
-                            <div id='Drag_Image' className='display justify-c w-88 absolute'>
-                                <Image 
-                                    src={LoadImag} 
-                                    Opacity={Opacity} 
-                                    Position={Position} 
-                                    Zoom={Zoom} 
-                                />
-                            </div>
+                            <Draggable bounds='parent'>
+                                <div className='display justify-c w-88 absolute' style={{cursor: 'move'}}>
+                                    <Image 
+                                        src={LoadImag} 
+                                        Opacity={Opacity} 
+                                        Position={Position} 
+                                        Zoom={Zoom} 
+                                    />
+                                </div>
+                            </Draggable>
                         </div>
 
                         <div className='display justify-c w-100 gap zi-2 bottom-0 fixed' style={{height: '10vh'}}>
