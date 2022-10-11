@@ -83,10 +83,10 @@ export default function Camera() {
                         render={({ status, startRecording, stopRecording, mediaBlobUrl }) => {
 
 
-                           /*  if (mediaBlobUrl)  {
+                            if (mediaBlobUrl)  {
                                 console.log(mediaBlobUrl);
                                 return <MediaDowload videoURL={mediaBlobUrl} />
-                            } */
+                            }
 
                             return (
                                 <>
@@ -157,7 +157,7 @@ export default function Camera() {
                                         </div>
                                     </div>
 
-                                    <video style={{transform: `scale(${TypeZoom === 'screen' && Zoom/100})`}}  controls={false} id="camera--view" autoPlay className='transition w-100 h-100vh fit-cover' /> 
+                                    <video style={{transform: `scale(${TypeZoom === 'screen' && Zoom/100})`}}  controls={false} playsInline id="camera--view" autoPlay className='transition w-100 h-100vh fit-cover' /> 
                                 </>
                             )
                         }}
