@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import DragImage from './function/Drag'
 
 
 export default function Camera() {
@@ -49,12 +50,18 @@ export default function Camera() {
 
         if (file) PreviewImg()
 
-        function PreviewImg() {
-
+        async function PreviewImg() {
             reader.addEventListener("load", (e) => setLoadImg(reader.result))
             reader.readAsDataURL(file)
         }
+        PreviewImg()
+        .then(e=> {
+            DragImage(document.getElementById("Drag_Image"))     
+        })
     }
+
+
+
 
 
     return (
@@ -64,19 +71,22 @@ export default function Camera() {
 
                 <div className="grid justify-c">
 
-                    <div className="w-100 h-100 grid absolute overflow-hidden">
+                    <div className="w-100 h-100 grid absolute overflow-hidden zi-2">
 
-                        <div className='display justify-c w-100 gap zi-2' style={{height: '10vh'}} >
-                            <ButtonControl onClick={e=> setZoom(Zoom >= widthMin ? Zoom -10 : Zoom)} >
-                                <svg className='w-2' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM13.5 10.5h-6" /></svg>
-                            </ButtonControl>
-                            <ButtonControl onClick={e=> setZoom(Zoom +10)}>
-                                <svg className='w-2' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">  <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6" /></svg>
-                            </ButtonControl>
-                        </div>
+                        {
+                            LoadImag&&
+                            <div className='display justify-c w-100 gap zi-2' style={{height: '10vh'}} >
+                                <ButtonControl onClick={e=> setZoom(Zoom >= widthMin ? Zoom -10 : Zoom)} >
+                                    <svg className='w-2' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM13.5 10.5h-6" /></svg>
+                                </ButtonControl>
+                                <ButtonControl onClick={e=> setZoom(Zoom +10)}>
+                                    <svg className='w-2' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">  <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6" /></svg>
+                                </ButtonControl>
+                            </div>
+                        }
 
                         <div className='display justify-c' style={{height: '80vh'}}>
-                            <div className='display justify-c w-88'>
+                            <div  id='Drag_Image' className='display justify-c w-88 absolute'>
                                 <Image 
                                     src={LoadImag} 
                                     Opacity={Opacity} 
