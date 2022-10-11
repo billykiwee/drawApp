@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import Draggable from 'react-draggable'
-import DragImage from './function/Drag'
 
 
 
@@ -20,8 +19,6 @@ export default function Camera() {
 
         // Define constants
         const cameraView    = document.querySelector("#camera--view")
-        const cameraOutput  = document.querySelector("#camera--output")
-        const cameraSensor  = document.querySelector("#camera--sensor")
         
         navigator.mediaDevices
         .getUserMedia(constraints)
@@ -89,8 +86,8 @@ export default function Camera() {
                         }
 
                         <div className='display justify-c' style={{height: '80vh'}}>
-                            <Draggable bounds='parent'>
-                                <div className='display justify-c w-88 absolute' style={{cursor: 'move'}}>
+                            <Draggable>
+                                <div className='display justify-c w-88 absolute' >
                                     <Image 
                                         src={LoadImag} 
                                         Opacity={Opacity} 
