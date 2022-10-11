@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Draggable from 'react-draggable'
 import { ReactMediaRecorder } from "react-media-recorder"
+import MediaDowload from './Media'
 
 
 
@@ -70,7 +71,7 @@ export default function Camera() {
     
     
 
-    if (VideoRecorded) return <MediaRecordedPop mediaBlobUrl={VideoRecorded} />
+
     return (
         <main id="camera" >
 
@@ -81,7 +82,12 @@ export default function Camera() {
                         video
                         render={({ status, startRecording, stopRecording, mediaBlobUrl }) => {
 
-                            setVideoRecorded(mediaBlobUrl)
+
+                            if (mediaBlobUrl)  {
+                                console.log(mediaBlobUrl);
+                                return <MediaDowload videoURL={mediaBlobUrl} />
+                            }
+
                             return (
                                 <>
                                     <div className="w-100 h-100 grid absolute overflow-hidden zi-2">
@@ -151,7 +157,7 @@ export default function Camera() {
                                         </div>
                                     </div>
 
-                                    <video style={{transform: `scale(${TypeZoom === 'screen' && Zoom/100})`}}  controls={false} id="camera--view" autoPlay playsInline className='transition w-100 h-100vh fit-cover' /> 
+                                    <video style={{transform: `scale(${TypeZoom === 'screen' && Zoom/100})`}}  controls={false} id="camera--view" autoPlay className='transition w-100 h-100vh fit-cover' /> 
                                 </>
                             )
                         }}
@@ -192,24 +198,5 @@ function ButtonControl({children, onClick}) {
         </div>
     )
 }
-
-
-
-function MediaRecordedPop({mediaBlobUrl}) {
-    return (
-        <div className='display grid'>
-            <div className='grid border-1 white p-1' >
-                <div>
-                    <span>Télécharger la video</span>
-                </div>
-                <div className='display'>
-                    <video src={mediaBlobUrl} id="camera--view" download={mediaBlobUrl} controls={true} autoPlay playsInline className='transition w-100 fit-cover' /> 
-                </div>
-                <a href={mediaBlobUrl} download>rere</a>
-            </div>
-        </div>
-    )
-}
-
 
 
