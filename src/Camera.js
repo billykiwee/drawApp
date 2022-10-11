@@ -25,26 +25,12 @@ export default function Camera() {
             cameraView.srcObject = stream
         })
         .catch(error => {
-            console.error("Oops. Something is broken.", error)
+            console.error(error)
         })
-
-        /*  const cameraTrigger = document.querySelector("#camera--trigger")
-     
-         // Take a picture when cameraTrigger is tapped
-         cameraTrigger.onclick = e => {
-             cameraSensor.width = cameraView.videoWidth
-             cameraSensor.height = cameraView.videoHeight
-             cameraSensor.getContext("2d").drawImage(cameraView, 0, 0)
-             cameraOutput.src = cameraSensor.toDataURL("image/webp")
-             cameraOutput.classList.add("taken")
-         } */
     }
 
-
     useEffect(e=> {
-        
-        cameraStart()
-        
+        cameraStart()        
     }, [window])
 
 
@@ -110,7 +96,7 @@ export default function Camera() {
                             <ButtonControl onClick={e=> setPosition(Position -90)} >
                                 <svg className="w-2 h-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 00-3.7-3.7 48.678 48.678 0 00-7.324 0 4.006 4.006 0 00-3.7 3.7c-.017.22-.032.441-.046.662M19.5 12l3-3m-3 3l-3-3m-12 3c0 1.232.046 2.453.138 3.662a4.006 4.006 0 003.7 3.7 48.656 48.656 0 007.324 0 4.006 4.006 0 003.7-3.7c.017-.22.032-.441.046-.662M4.5 12l3 3m-3-3l-3 3" /></svg>
                             </ButtonControl>
-                            <ButtonControl>
+                            <ButtonControl >
                                 <svg className="w-2 h-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">  <path strokeLinecap="round" d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z" /></svg>
                             </ButtonControl>
                             <div className='grid'>
