@@ -11,40 +11,41 @@ export default function Camera() {
         audio: false 
     }
 
-    useEffect(e=> {
-        
-        // Access the device camera and stream to cameraView
-        function cameraStart() {
-    
-            navigator.mediaDevices
-            .getUserMedia(constraints)
-            .then(stream => {
-                cameraView.srcObject = stream
-            })
-            .catch(error => {
-                console.error("Oops. Something is broken.", error)
-            })
-        }
+    // Access the device camera and stream to cameraView
+    function cameraStart() {
 
         // Define constants
         const cameraView    = document.querySelector("#camera--view")
         const cameraOutput  = document.querySelector("#camera--output")
         const cameraSensor  = document.querySelector("#camera--sensor")
-
-       /*  const cameraTrigger = document.querySelector("#camera--trigger")
-
-        // Take a picture when cameraTrigger is tapped
-        cameraTrigger.onclick = e => {
-            cameraSensor.width = cameraView.videoWidth
-            cameraSensor.height = cameraView.videoHeight
-            cameraSensor.getContext("2d").drawImage(cameraView, 0, 0)
-            cameraOutput.src = cameraSensor.toDataURL("image/webp")
-            cameraOutput.classList.add("taken")
-        } */
-
-        window.addEventListener("load", cameraStart, false)
         
-    })
+        navigator.mediaDevices
+        .getUserMedia(constraints)
+        .then(stream => {
+            cameraView.srcObject = stream
+        })
+        .catch(error => {
+            console.error("Oops. Something is broken.", error)
+        })
+
+        /*  const cameraTrigger = document.querySelector("#camera--trigger")
+     
+         // Take a picture when cameraTrigger is tapped
+         cameraTrigger.onclick = e => {
+             cameraSensor.width = cameraView.videoWidth
+             cameraSensor.height = cameraView.videoHeight
+             cameraSensor.getContext("2d").drawImage(cameraView, 0, 0)
+             cameraOutput.src = cameraSensor.toDataURL("image/webp")
+             cameraOutput.classList.add("taken")
+         } */
+    }
+
+
+    useEffect(e=> {
+        
+        cameraStart()
+        
+    }, [window])
 
 
 
@@ -82,8 +83,7 @@ export default function Camera() {
                         </div>
                     </div>
                     <canvas id="camera--sensor" className="absolute h-100"></canvas>
-                    <video id="camera--view" autoPlay playsInline className='h-100vh fit-cover' />
-                    <img src="//:0" alt="" id="camera--output" />
+                    <video id="camera--view" autoPlay playsInline className='h-100vh fit-cover' /> 
                 </div>
 
                 <div className='display justify-c absolute bottom-2rem w-100 gap'>
