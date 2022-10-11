@@ -83,10 +83,10 @@ export default function Camera() {
                         render={({ status, startRecording, stopRecording, mediaBlobUrl }) => {
 
 
-                            if (mediaBlobUrl)  {
+                           /*  if (mediaBlobUrl)  {
                                 console.log(mediaBlobUrl);
                                 return <MediaDowload videoURL={mediaBlobUrl} />
-                            }
+                            } */
 
                             return (
                                 <>
