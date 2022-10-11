@@ -106,7 +106,7 @@ export default function Camera() {
                         </div>
                     </div>
 
-                    <canvas id="camera--sensor" className="absolute h-100"></canvas>
+                    {/* <canvas id="camera--sensor" className="absolute h-100"></canvas> */}
                     <video controls={false} id="camera--view" autoPlay playsInline className='w-100 h-100vh fit-cover' /> 
                 </div>
 
