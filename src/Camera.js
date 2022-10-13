@@ -67,7 +67,13 @@ export default function Camera() {
 
 
     const { status, startRecording, stopRecording, mediaBlobUrl } =
-        useReactMediaRecorder({ video: true });
+        useReactMediaRecorder({ 
+            video: true, 
+            facingMode:{exact: "environment"}  ,
+            audio: true, blobPropertyBag: {
+                type: "video/mp4"
+            }
+        });
     
     return (
         <div>
