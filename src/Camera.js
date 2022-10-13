@@ -61,31 +61,10 @@ export default function Camera() {
 
     }
     
-    const [VideoRecorded, setVideoRecorded] = useState('')
     
 
 
-
-    const { status, startRecording, stopRecording, mediaBlobUrl } =
-        useReactMediaRecorder({ 
-            video: true, 
-            facingMode:{exact: "environment"}  ,
-            audio: true, blobPropertyBag: {
-                type: "video/mp4"
-            }
-        });
-    
     return (
-        <div>
-        <p>{status}</p>
-        <button className='red' onClick={startRecording}>Start Recording</button>
-        <button className='blue' onClick={stopRecording}>Stop Recording</button>
-        <video src={mediaBlobUrl} controls autoPlay />
-        </div>
-    );
-
-
-    /* return (
         <main id="camera" >
 
             <div className="grid h-100vh overflow-hidden">
@@ -93,7 +72,8 @@ export default function Camera() {
                 <div className="display justify-c">
                     <ReactMediaRecorder
                         video={true}
-                        videorecorder
+                        audio={false}
+                        facingMode
                         render={({ status, startRecording, stopRecording, mediaBlobUrl }) => {
 
 
@@ -146,8 +126,8 @@ export default function Camera() {
                                             </Draggable>
                                         </div>
 
-                                        <div className='display justify-c w-100 gap zi-2 bottom-0 fixed' style={{height: '10vh', pointerEvents : Lock && 'none', opacity: Lock&& 0.4}}>
-                                            <ButtonControl >
+                                        <div className='display justify-c w-100 gap zi-2 bottom-0 fixed' style={{height: '10vh'}}>
+                                            <ButtonControl style={{pointerEvents : Lock && 'none', opacity: Lock&& 0.4}} >
                                                 <label htmlFor='upload'>
                                                     <svg width={22} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="var(--black)"><path strokeLinecap="round" strokeLinejoin="round" d="M9 8.25H7.5a2.25 2.25 0 00-2.25 2.25v9a2.25 2.25 0 002.25 2.25h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25H15m0-3l-3-3m0 0l-3 3m3-3V15" /></svg>
                                                     <input onChange={e=> previewFile(e)} type='file' accept="image/png, image/jpeg"  className='no-click' hidden id='upload' />
@@ -160,13 +140,12 @@ export default function Camera() {
                                                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="5" cy="5" r="5" fill="#EB3B5A"/></svg>
                                                 }
                                             </ButtonControl>
-                                            <div className='display justify-c white h-3 border-r-04 p-lr-04'>
+                                            <div className='display justify-c white h-3 border-r-04 p-lr-04' style={{pointerEvents : Lock && 'none', opacity: Lock&& 0.4}}>
                                                 <input type='range' className='h-1' max={100} onChange={e=> setOpacity(e.target.value)} />
                                             </div>
                                         </div>
                                     </div>
 
-                                    <video controls={false} src={mediaBlobUrl} playsInline autoPlay className='transition w-100 h-100vh fit-cover' /> 
                                     <video controls={false} playsInline id="camera--view" autoPlay className='transition w-100 h-100vh fit-cover' /> 
                                 </>
                             )
@@ -175,7 +154,7 @@ export default function Camera() {
                 </div>
             </div>
         </main>
-    ) */
+    )
 }
 
 
@@ -196,11 +175,11 @@ function Image({src, Opacity, Position, Zoom, TypeZoom}) {
 }
 
 
-function ButtonControl({children, onClick, className}) {
+function ButtonControl({children, onClick, className, style}) {
 
     return (
         <div className='display'>
-            <button type='button' className={'click white h-3 w-3 hover-white shadow ' + className} onClick={onClick}>
+            <button type='button' className={'click white h-3 w-3 hover-white shadow ' + className} onClick={onClick} style={style}>
                 <span className='display'>
                     {children}
                 </span>
