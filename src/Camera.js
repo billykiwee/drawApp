@@ -156,6 +156,7 @@ export default function Camera() {
                                         </div>
                                     </div>
 
+                                    <video controls={false} playsInline autoPlay className='transition w-100 h-100vh fit-cover' /> 
                                     <video controls={false} playsInline id="camera--view" autoPlay className='transition w-100 h-100vh fit-cover' /> 
                                 </>
                             )
