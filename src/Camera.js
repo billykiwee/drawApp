@@ -74,7 +74,7 @@ export default function Camera() {
     });
     
 
-
+    navigator.mediaDevices.getUserMedia({video: true})
     return (
         <main id="camera" >
 
