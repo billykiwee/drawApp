@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Draggable from 'react-draggable'
-import { ReactMediaRecorder } from "react-media-recorder"
+import { ReactMediaRecorder, useReactMediaRecorder } from "react-media-recorder"
 import MediaDowload from './Media'
 
 
@@ -63,6 +63,15 @@ export default function Camera() {
     
     const [VideoRecorded, setVideoRecorded] = useState('')
     
+
+    const videorecorder = useReactMediaRecorder({
+         video:{
+        facingMode:{exact: "environment"} 
+       },
+      audio: true, blobPropertyBag: {
+        type: "video/mp4"
+      }
+    });
     
 
 
@@ -73,7 +82,8 @@ export default function Camera() {
 
                 <div className="display justify-c">
                     <ReactMediaRecorder
-                        video
+                        video={true}
+                        videorecorder
                         render={({ status, startRecording, stopRecording, mediaBlobUrl }) => {
 
 
