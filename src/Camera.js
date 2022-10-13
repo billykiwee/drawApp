@@ -64,18 +64,22 @@ export default function Camera() {
     const [VideoRecorded, setVideoRecorded] = useState('')
     
 
-    const videorecorder = useReactMediaRecorder({
-         video:{
-        facingMode:{exact: "environment"} 
-       },
-      audio: true, blobPropertyBag: {
-        type: "video/mp4"
-      }
-    });
-    
 
-    navigator.mediaDevices.getUserMedia({video: true})
+
+    const { status, startRecording, stopRecording, mediaBlobUrl } =
+        useReactMediaRecorder({ video: true });
+    
     return (
+        <div>
+        <p>{status}</p>
+        <button className='red' onClick={startRecording}>Start Recording</button>
+        <button className='blue' onClick={stopRecording}>Stop Recording</button>
+        <video src={mediaBlobUrl} controls autoPlay />
+        </div>
+    );
+
+
+    /* return (
         <main id="camera" >
 
             <div className="grid h-100vh overflow-hidden">
@@ -156,7 +160,7 @@ export default function Camera() {
                                         </div>
                                     </div>
 
-                                    <video controls={false} playsInline autoPlay className='transition w-100 h-100vh fit-cover' /> 
+                                    <video controls={false} src={mediaBlobUrl} playsInline autoPlay className='transition w-100 h-100vh fit-cover' /> 
                                     <video controls={false} playsInline id="camera--view" autoPlay className='transition w-100 h-100vh fit-cover' /> 
                                 </>
                             )
@@ -165,7 +169,7 @@ export default function Camera() {
                 </div>
             </div>
         </main>
-    )
+    ) */
 }
 
 
