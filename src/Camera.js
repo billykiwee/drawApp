@@ -19,26 +19,19 @@ export default function Camera() {
   function cameraStart() {
     // Define constants
     const cameraView = document.querySelector("#camera--view");
-    const cameraView2 = document.querySelector("#camera--view2");
     navigator.mediaDevices
       .getUserMedia(constraints)
       .then((stream) => {
-        cameraView2.srcObject = stream;
         cameraView.srcObject = stream;
-
-        console.log(cameraView.srcObject, cameraView2.srcObject);
       })
       .catch((error) => {
         console.error(error);
       });
   }
 
-  useEffect(
-    (e) => {
-      cameraStart();
-    },
-    [window]
-  );
+  useEffect((e) => {
+    cameraStart();
+  }, []);
 
   const [Opacity, setOpacity] = useState(70);
   const [Position, setPosition] = useState(0);
