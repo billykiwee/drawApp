@@ -10,7 +10,7 @@ export default function Camera() {
   // Set constraints for the video stream
   var constraints = {
     video: {
-      facingMode: "environment",
+      facingMode: "user",
     },
     audio: false,
   };
