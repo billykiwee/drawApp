@@ -10,9 +10,9 @@ export default function Camera() {
   // Set constraints for the video stream
   var constraints = {
     video: {
-      facingMode: "user",
+      facingMode: "environment",
     },
-    audio: false,
+    audio: true,
   };
 
   // Access the device camera and stream to cameraView
@@ -69,9 +69,7 @@ export default function Camera() {
       <div className="grid h-100vh overflow-hidden">
         <div className="display justify-c">
           <ReactMediaRecorder
-            video={true}
-            audio={false}
-            facingMode="user"
+            props={constraints}
             render={({
               status,
               startRecording,
@@ -306,13 +304,6 @@ export default function Camera() {
                     controls={false}
                     playsInline
                     id="camera--view"
-                    autoPlay
-                    className="transition w-100 h-100vh fit-cover"
-                  />
-                  <video
-                    controls={false}
-                    playsInline
-                    id="camera--view2"
                     autoPlay
                     className="transition w-100 h-100vh fit-cover"
                   />
